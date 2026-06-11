@@ -75,13 +75,12 @@ local servers = {
 
 local opts = {
     ensure_installed = {
-        "lua_ls",
+        -- "lua_ls",
         -- "pyright",
         -- "clangd",
         -- "rust_analyzer",
         -- "hls",
     },
-    automatic_installation = true,
 }
 
 local config = function()
