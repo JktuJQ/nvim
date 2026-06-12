@@ -1,6 +1,6 @@
 local opts = {
 	options = {
-		theme = "duskfox",
+		theme = "catppuccin-nvim",
 		globalstatus = true,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
