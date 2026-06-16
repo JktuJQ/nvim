@@ -52,7 +52,7 @@ local opts = {
         {
             pane = 2,
             section = "terminal",
-            cmd = "bash -i -c 'colorscript -e square'",
+            cmd = "colorscript -e square",
             height = 5,
             padding = 1,
         },
