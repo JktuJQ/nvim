@@ -18,6 +18,18 @@ local lua_ls = {
         },
     },
 }
+local nil_ls = {
+    settings = {
+        ['nil'] = {
+            formatting = {
+                command = { "nixfmt" },
+            },
+            diagnostics = {
+                ignored = { "unused_binding", "unused_with" },
+            },
+        },
+    },
+}
 local pyright = {
     settings = {
         python = {
@@ -68,6 +80,7 @@ local rust_analyzer = {
 }
 local servers = {
     lua_ls = lua_ls,
+    nil_ls = nil_ls,
     pyright = pyright,
     clangd = clangd,
     rust_analyzer = rust_analyzer,
@@ -76,6 +89,7 @@ local servers = {
 local opts = {
     ensure_installed = {
         -- "lua_ls",
+        -- "nil_ls",
         -- "pyright",
         -- "clangd",
         -- "rust_analyzer",
