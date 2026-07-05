@@ -9,7 +9,7 @@ local opts = {
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = { },
+		lualine_c = {},
 		lualine_x = {
 			{
 				function()
@@ -17,7 +17,7 @@ local opts = {
 
 					local clients = vim.lsp.get_clients({ bufnr = 0 })
 					if #clients > 0 then
-						table.insert(parts, "🛠".. clients[1].name)
+						table.insert(parts, "🛠" .. clients[1].name)
 					else
 						table.insert(parts, "No LSP")
 					end

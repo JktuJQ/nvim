@@ -1,7 +1,7 @@
 local opts = {
-    enabled = true,
+	enabled = true,
 }
 
 return {
-    opts = opts,
+	opts = opts,
 }

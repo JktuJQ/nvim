@@ -1,11 +1,11 @@
 local opts = {
-    check_ts = true,
+	check_ts = true,
 }
 
 return {
-    "windwp/nvim-autopairs",
+	"windwp/nvim-autopairs",
 
-    event = "InsertEnter",
+	event = "InsertEnter",
 
-    opts = opts,
+	opts = opts,
 }

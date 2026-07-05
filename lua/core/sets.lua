@@ -4,13 +4,13 @@ vim.g.have_nerd_fonts = true
 
 -- windows/tabs/splits
 vim.opt.fillchars = {
-    vert = "█",
-    horiz = "█",
-    verthoriz = "█",
-    vertleft = "█",
-    vertright = "█",
-    horizup = "█",
-    horizdown = "█",
+	vert = "█",
+	horiz = "█",
+	verthoriz = "█",
+	vertleft = "█",
+	vertright = "█",
+	horizup = "█",
+	horizdown = "█",
 }
 
 vim.api.nvim_set_hl(0, "WinSeparator", { bold = true })
@@ -44,7 +44,7 @@ vim.opt.updatetime = 250
 -- utils
 vim.g.mapleader = " "
 
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 vim.opt.wrap = false
 vim.opt.swapfile = false

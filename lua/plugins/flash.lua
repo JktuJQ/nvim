@@ -1,13 +1,13 @@
 local opts = {
-    highlight = {
-        backdrop = false,
-    },
+	highlight = {
+		backdrop = false,
+	},
 	modes = {
 		char = {
 			enabled = true,
-            highlight = {
-                backdrop = false,
-            },
+			highlight = {
+				backdrop = false,
+			},
 			jump_labels = true,
 			multi_line = true,
 			labels = "qwertyuiopasdfghjklzxcvbnm",
