@@ -78,12 +78,31 @@ local rust_analyzer = {
 		},
 	},
 }
+local texlab = {
+	settings = {
+		texlab = {
+			build = {
+				executable = "latexmk",
+				args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+				onSave = true,
+			},
+			forwardSearch = {
+				executable = "zathura",
+				args = { "--synctex-forward", "%l:1:%f", "%p" },
+			},
+			chktex = {
+				onOpenAndSave = true,
+			},
+		},
+	},
+}
 local servers = {
 	lua_ls = lua_ls,
 	nil_ls = nil_ls,
 	pyright = pyright,
 	clangd = clangd,
 	rust_analyzer = rust_analyzer,
+	texlab = texlab,
 }
 
 local opts = {
@@ -94,6 +113,7 @@ local opts = {
 		-- "clangd",
 		-- "rust_analyzer",
 		-- "hls",
+		-- "texlab",
 	},
 }
 
