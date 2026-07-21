@@ -3,8 +3,7 @@ Snacks.keymap.set("i", "kk", "<Esc>")
 Snacks.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>")
 
 Snacks.keymap.set("n", "<leader>yf", ":%y+<CR>")
-
-Snacks.keymap.set("v", "p", '"_dP')
+Snacks.keymap.set("n", "<leader>pf", ":%d | put + | 1d_<CR>")
 
 Snacks.keymap.set("n", "<leader>n", function()
 	if vim.wo.relativenumber then
@@ -30,14 +29,8 @@ Snacks.keymap.set("v", "<right>", "3l")
 -- selection
 Snacks.keymap.set("v", "J", ":m '>+1<CR>gv")
 Snacks.keymap.set("v", "K", ":m '<-2<CR>gv")
-
 Snacks.keymap.set("v", "H", "<gv")
 Snacks.keymap.set("v", "L", ">gv")
-
--- buffers
-Snacks.keymap.set("n", "<leader>bp", ":bprevious<CR>")
-Snacks.keymap.set("n", "<leader>bn", ":bnext<CR>")
-Snacks.keymap.set("n", "<leader>bd", ":bdelete<CR>")
 
 -- splits
 Snacks.keymap.set("n", "<C-q>", ":q<CR>")
@@ -61,21 +54,3 @@ Snacks.keymap.set("n", "<C-S-h>", ":vertical resize +5<CR>")
 Snacks.keymap.set("n", "<C-S-j>", ":resize +5<CR>")
 Snacks.keymap.set("n", "<C-S-k>", ":resize -5<CR>")
 Snacks.keymap.set("n", "<C-S-l>", ":vertical resize -5<CR>")
-
--- tabs
-Snacks.keymap.set("n", "<A-h>", "gT")
-Snacks.keymap.set("n", "<A-l>", "gt")
-
-Snacks.keymap.set("n", "<A-CR>", ":tabnew<CR>")
-Snacks.keymap.set("n", "<A-q>", ":tabclose<CR>")
-
-Snacks.keymap.set("n", "<A-1>", "1gt")
-Snacks.keymap.set("n", "<A-2>", "2gt")
-Snacks.keymap.set("n", "<A-3>", "3gt")
-Snacks.keymap.set("n", "<A-4>", "4gt")
-Snacks.keymap.set("n", "<A-5>", "5gt")
-Snacks.keymap.set("n", "<A-6>", "6gt")
-Snacks.keymap.set("n", "<A-7>", "7gt")
-Snacks.keymap.set("n", "<A-8>", "8gt")
-Snacks.keymap.set("n", "<A-9>", "9gt")
-Snacks.keymap.set("n", "<A-0>", ":tablast<CR>")

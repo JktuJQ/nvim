@@ -63,7 +63,7 @@ local opts = {
 		lualine_z = {},
 	},
 	tabline = {
-		lualine_a = { "filename" },
+		lualine_a = { "buffers" },
 		lualine_b = {},
 		lualine_c = {},
 		lualine_x = {},
@@ -77,5 +77,6 @@ return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	event = "VimEnter",
+
 	opts = opts,
 }
