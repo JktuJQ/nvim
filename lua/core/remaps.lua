@@ -1,56 +1,78 @@
--- basic remaps
-Snacks.keymap.set("i", "kk", "<Esc>")
-Snacks.keymap.set("n", "<Esc>", "<Cmd>nohlsearch<CR>")
+local map = Snacks.keymap.set;
 
-Snacks.keymap.set("n", "<leader>yf", ":%y+<CR>")
-Snacks.keymap.set("n", "<leader>pf", ":%d | put + | 1d_<CR>")
+-- convenience remaps
+map("i", "kk", "<esc>", { desc = "Mode changer" })
 
-Snacks.keymap.set("n", "<leader>n", function()
-	if vim.wo.relativenumber then
-		vim.wo.relativenumber = false
-		vim.wo.number = true
-	else
-		vim.wo.relativenumber = true
-		vim.wo.number = true
-	end
-end, { desc = "Toggle relative/absolute line numbers" })
+map("n", "<leader>yf", ":%y+<CR>")
+map("n", "<leader>pf", ":%d | put + | 1d_<CR>")
 
--- fast movement
-Snacks.keymap.set("n", "<left>", "3h")
-Snacks.keymap.set("n", "<down>", "3j")
-Snacks.keymap.set("n", "<up>", "3k")
-Snacks.keymap.set("n", "<right>", "3l")
+-- typing
+map("i", ",", ",<c-g>u")
+map("i", ".", ".<c-g>u")
+map("i", ";", ";<c-g>u")
 
-Snacks.keymap.set("v", "<left>", "3h")
-Snacks.keymap.set("v", "<down>", "3j")
-Snacks.keymap.set("v", "<up>", "3k")
-Snacks.keymap.set("v", "<right>", "3l")
+-- movement
+local better_jk = function(letter)
+    return ("v:count == 0 ? 'g%s' : '%s'"):format(letter, letter)
+end
+map({ "n", "x" }, "j", better_jk("j"), { desc = "Down", expr = true, silent = true, remap = true })
+map({ "n", "x" }, "k", better_jk("k"), { desc = "Up", expr = true, silent = true, remap = true })
 
--- selection
-Snacks.keymap.set("v", "J", ":m '>+1<CR>gv")
-Snacks.keymap.set("v", "K", ":m '<-2<CR>gv")
-Snacks.keymap.set("v", "H", "<gv")
-Snacks.keymap.set("v", "L", ">gv")
+map({ "n", "x" }, "<up>", "3k", { desc = "Up 3 lines", remap = true })
+map({ "n", "x" }, "<down>", "3j", { desc = "Down 3 lines", remap = true })
+map({ "n", "x" }, "<left>", "3h", { desc = "Left 3 symbols", remap = true })
+map({ "n", "x" }, "<right>", "3l", { desc = "Right 3 symbols", remap = true })
 
 -- splits
-Snacks.keymap.set("n", "<C-q>", ":q<CR>")
+map("n", "<C-h>", "<C-w>h", { desc = "Go to left split", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to lower split", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to upper split", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to right split", remap = true })
 
-Snacks.keymap.set("n", "<C-h>", "<C-w>h")
-Snacks.keymap.set("n", "<C-j>", "<C-w>j")
-Snacks.keymap.set("n", "<C-k>", "<C-w>k")
-Snacks.keymap.set("n", "<C-l>", "<C-w>l")
+map("n", "<C-up>", "<cmd>resize +2<cr>", { desc = "Increase split height", remap = true })
+map("n", "<C-down>", "<cmd>resize -2<cr>", { desc = "Decrease split height", remap = true })
+map("n", "<C-left>", "<cmd>vertical resize +2<cr>", { desc = "Increase split width", remap = true })
+map("n", "<C-right>", "<cmd>vertical resize -2<cr>", { desc = "Decrease split width", remap = true })
 
-Snacks.keymap.set("t", "<C-h>", "<C-\\><C-n><C-w>h")
-Snacks.keymap.set("t", "<C-j>", "<C-\\><C-n><C-w>j")
-Snacks.keymap.set("t", "<C-k>", "<C-\\><C-n><C-w>k")
-Snacks.keymap.set("t", "<C-l>", "<C-\\><C-n><C-w>l")
+map("n", "<C-->", "<C-w>s", { desc = "Split horizontally", remap = true })
+map("n", "<C-\\>", "<C-w>v", { desc = "Split vertically", remap = true })
+map("n", "<C-q>", "<C-w>c", { desc = "Close split", remap = true })
 
-Snacks.keymap.set("n", "<C-A-h>", "<C-w>v<C-w>h")
-Snacks.keymap.set("n", "<C-A-j>", "<C-w>s<C-w>j")
-Snacks.keymap.set("n", "<C-A-k>", "<C-w>s<C-w>k")
-Snacks.keymap.set("n", "<C-A-l>", "<C-w>v<C-w>l")
+-- buffers
+map("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
+map("n", "<A-l>", "<cmd>bnext<cr>", { desc = "Go to previous buffer" })
 
-Snacks.keymap.set("n", "<C-S-h>", ":vertical resize +5<CR>")
-Snacks.keymap.set("n", "<C-S-j>", ":resize +5<CR>")
-Snacks.keymap.set("n", "<C-S-k>", ":resize -5<CR>")
-Snacks.keymap.set("n", "<C-S-l>", ":vertical resize -5<CR>")
+map("n", "<A-b>", function() Snacks.bufdelete() end, { desc = "Delete buffer" })
+map("n", "<A-b>do", function() Snacks.bufdelete.other() end, { desc = "Delete other buffers" })
+map("n", "<A-b>di", function() Snacks.bufdelete.invisible() end, { desc = "Delete invisible buffers" })
+map("n", "<A-b>D", "<cmd>bd<cr>", { desc = "Delete buffer and window" })
+
+-- tabs
+map("n", "<tab>f", "<cmd>tabfirst<cr>", { desc = "Go to first tab" })
+map("n", "<tab>l", "<cmd>tablast<cr>", { desc = "Go to last tab" })
+map("n", "<tab>h", "<cmd>tabprevious<cr>", { desc = "Go to previous tab" })
+map("n", "<tab>l", "<cmd>tabnext<cr>", { desc = "Go to next tab" })
+
+map("n", "<tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
+map("n", "<tab>d", "<cmd>tabclose<cr>", { desc = "Close tab" })
+map("n", "<tab>do", "<cmd>tabonly<cr>", { desc = "Close other tabs" })
+
+-- selection
+map("x", "<", "<gv")
+map("x", ">", ">gv")
+
+map("v", "J", ":m '>+1<CR>gv")
+map("v", "K", ":m '<-2<CR>gv")
+map("v", "H", "<gv")
+map("v", "L", ">gv")
+
+-- search
+map({ "i", "n", "s" }, "<esc>", function()
+  vim.cmd("noh")
+  return "<esc>"
+end, { expr = true, desc = "Escape and clear hlsearch" })
+
+map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
+map({ "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
+map({ "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })

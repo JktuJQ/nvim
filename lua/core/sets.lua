@@ -1,55 +1,94 @@
--- appearance
-vim.opt.termguicolors = true
-vim.g.have_nerd_fonts = true
+local opt = vim.opt
 
--- windows/tabs/splits
-vim.opt.fillchars = {
-	vert = "█",
-	horiz = "█",
-	verthoriz = "█",
-	vertleft = "█",
-	vertright = "█",
-	horizup = "█",
-	horizdown = "█",
+-- leader
+vim.g.mapleader = " "
+vim.g.localmapleader = "\\"
+
+-- appearance
+opt.termguicolors = true
+vim.g.have_nerd_fonts = true
+opt.conceallevel = 2
+opt.laststatus = 3
+opt.showmode = false
+opt.ruler = false
+opt.cursorline = true
+opt.signcolumn = "yes"
+opt.pumblend = 10
+opt.pumheight = 10
+opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
 }
 
-vim.api.nvim_set_hl(0, "WinSeparator", { bold = true })
-vim.api.nvim_set_hl(0, "VertSplit", { bold = true })
+-- line numbers
+opt.number = true
+opt.relativenumber = true
+opt.scrolloff = 8
+opt.sidescrolloff = 8
 
--- lining
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.scrolloff = 8
-
-vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#3b4261" })
-vim.api.nvim_set_hl(0, "SnacksIndentScope", { fg = "#7aa2f7" })
-
--- tabs
-vim.opt.autoindent = true
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
-vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.expandtab = true
-vim.opt.smartindent = true
+-- tabs and indentation
+opt.autoindent = true
+opt.smartindent = true
+opt.expandtab = true
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
+opt.shiftround = true
 
 -- searching
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.updatetime = 250
+opt.hlsearch = false
+opt.incsearch = true
+opt.ignorecase = true
+opt.smartcase = true
+opt.inccommand = "nosplit"
+opt.grepprg = "rg --vimgrep"
+opt.grepformat = "%f:%l:%c:%m"
 
--- utils
-vim.g.mapleader = " "
+-- splits
+opt.splitbelow = true
+opt.splitright = true
+opt.splitkeep = "screen"
+opt.winminwidth = 5
+opt.virtualedit = "block"
 
-vim.opt.mouse = "a"
+-- files and backups
+opt.autowrite = true
+opt.confirm = true
+opt.swapfile = false
+opt.backup = false
+opt.undofile = true
+opt.undolevels = 10000
+opt.writebackup = false
 
-vim.opt.wrap = false
-vim.opt.swapfile = false
-vim.opt.backup = false
+-- timeouts
+opt.timeoutlen = 300
+opt.updatetime = 200
+opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
-vim.opt.undofile = true
+-- command line and completion
+opt.wildmode = "longest:full,full"
+opt.completeopt = "menu,menuone,noselect"
 
-vim.opt.timeoutlen = 300
+-- mouse and cursor
+opt.mouse = "a"
+opt.jumpoptions = "view"
+
+-- text
+opt.wrap = false
+opt.linebreak = true
+opt.list = true
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+opt.formatoptions = "jcroqlnt"
+
+opt.foldmethod = "indent"
+opt.foldlevel = 99
+opt.foldtext = ""
+
+-- misc
+opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
+opt.spelllang = { "en" }
+opt.smoothscroll = true
