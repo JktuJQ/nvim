@@ -41,6 +41,14 @@ local keys = {
 }
 
 return {
+	"rcarriga/nvim-dap-ui",
+	dependencies = {
+		"williamboman/mason.nvim",
+		"nvim-neotest/nvim-nio",
+
+		"mfussenegger/nvim-dap",
+	},
+
 	opts = opts,
 	config = config,
 	keys = keys,

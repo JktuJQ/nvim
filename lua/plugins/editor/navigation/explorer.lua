@@ -30,6 +30,8 @@ local keys = {
 }
 
 return {
-	opts = opts,
+	"folke/snacks.nvim",
+
+	opts = { explorer = opts },
 	keys = keys,
 }

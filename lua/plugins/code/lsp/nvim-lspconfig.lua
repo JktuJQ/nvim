@@ -105,6 +105,14 @@ local keys = {
 }
 
 return {
+	"neovim/nvim-lspconfig",
+	dependencies = {
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+	},
+
+	lazy = false,
+
 	config = config,
 	keys = keys,
 }

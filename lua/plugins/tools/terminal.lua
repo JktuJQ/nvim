@@ -24,6 +24,8 @@ local keys = {
 }
 
 return {
-	opts = opts,
+	"folke/snacks.nvim",
+
+	opts = { terminal = opts },
 	keys = keys,
 }

@@ -113,5 +113,7 @@ vim.api.nvim_set_hl(0, "SnacksDashboardDesc", { link = "Title" })
 vim.api.nvim_set_hl(0, "SnacksDashboardIcon", { link = "Title" })
 
 return {
-	opts = opts,
+	"folke/snacks.nvim",
+
+	opts = { dashboard = opts },
 }

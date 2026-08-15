@@ -26,6 +26,8 @@ local keys = {
 }
 
 return {
-	opts = opts,
+	"folke/snacks.nvim",
+
+	opts = { scratch = opts },
 	keys = keys,
 }

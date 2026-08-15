@@ -18,6 +18,14 @@ local config = function()
 end
 
 return {
+	"jay-babu/mason-nvim-dap.nvim",
+	dependencies = {
+		"williamboman/mason.nvim",
+		"nvim-neotest/nvim-nio",
+
+		"mfussenegger/nvim-dap",
+	},
+
 	opts = opts,
 	config = config,
 }

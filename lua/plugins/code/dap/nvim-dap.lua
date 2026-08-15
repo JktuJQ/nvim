@@ -75,7 +75,13 @@ local keys = {
 }
 
 return {
-	opts = opts,
-	config = config,
-	keys = keys,
+    "mfussenegger/nvim-dap",
+    dependencies = {
+        "williamboman/mason.nvim",
+        "nvim-neotest/nvim-nio",
+    },
+
+    opts = opts,
+    config = config,
+    keys = keys,
 }

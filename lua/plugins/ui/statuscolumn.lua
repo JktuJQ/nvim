@@ -10,5 +10,7 @@ local opts = {
 }
 
 return {
-	opts = opts,
+	"folke/snacks.nvim",
+
+	opts = { statuscolumn = opts },
 }

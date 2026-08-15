@@ -13,5 +13,7 @@ local opts = {
 }
 
 return {
-	opts = opts,
+	"folke/snacks.nvim",
+
+	opts = { indent = opts },
 }

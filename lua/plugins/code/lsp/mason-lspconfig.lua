@@ -142,6 +142,9 @@ local config = function()
 end
 
 return {
+	"williamboman/mason-lspconfig.nvim",
+	dependencies = { "williamboman/mason.nvim" },
+
 	opts = opts,
 	config = config,
 }

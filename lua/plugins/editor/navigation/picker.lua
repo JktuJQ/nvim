@@ -127,7 +127,10 @@ local keys = {
 		desc = "Find workspace symbols",
 	},
 }
+
 return {
-	opts = opts,
+	"folke/snacks.nvim",
+
+	opts = { picker = opts },
 	keys = keys,
 }
