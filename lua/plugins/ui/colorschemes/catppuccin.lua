@@ -4,7 +4,7 @@ local opts = {
 	show_end_of_buffer = false,
 	term_colors = true,
 	dim_inactive = {
-		enabled = false,
+		enabled = true,
 		shade = "dark",
 		percentage = 0.15,
 	},
@@ -18,6 +18,7 @@ local opts = {
 		variables = {},
 	},
 	integrations = {
+        bufferline = true,
 		blink_cmp = true,
 		lsp_trouble = true,
 		mason = true,
@@ -33,7 +34,6 @@ end
 
 return {
 	"catppuccin/nvim",
-	name = "catppuccin",
 	priority = 1000,
 
 	opts = opts,

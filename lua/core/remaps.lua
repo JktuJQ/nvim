@@ -42,16 +42,16 @@ map("n", "<C-q>", "<C-w>c", { desc = "Close split", remap = true })
 map("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
 map("n", "<A-l>", "<cmd>bnext<cr>", { desc = "Go to previous buffer" })
 
-map("n", "<A-d>", function()
+map("n", "<A-q>", function()
 	Snacks.bufdelete()
 end, { desc = "Delete buffer" })
-map("n", "<A-d>o", function()
+map("n", "<A-q>o", function()
 	Snacks.bufdelete.other()
 end, { desc = "Delete other buffers" })
-map("n", "<A-d>i", function()
+map("n", "<A-q>i", function()
 	Snacks.bufdelete.invisible()
 end, { desc = "Delete invisible buffers" })
-map("n", "<A-D>", "<cmd>bd<cr>", { desc = "Delete buffer and window" })
+map("n", "<A-Q>", "<cmd>bd<cr>", { desc = "Delete buffer and window" })
 
 -- tabs
 map("n", "<tab>f", "<cmd>tabfirst<cr>", { desc = "Go to first tab" })
@@ -60,8 +60,8 @@ map("n", "<tab>h", "<cmd>tabprevious<cr>", { desc = "Go to previous tab" })
 map("n", "<tab>l", "<cmd>tabnext<cr>", { desc = "Go to next tab" })
 
 map("n", "<tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
-map("n", "<tab>d", "<cmd>tabclose<cr>", { desc = "Close tab" })
-map("n", "<tab>do", "<cmd>tabonly<cr>", { desc = "Close other tabs" })
+map("n", "<tab>q", "<cmd>tabclose<cr>", { desc = "Close tab" })
+map("n", "<tab>qo", "<cmd>tabonly<cr>", { desc = "Close other tabs" })
 
 -- selection
 map("x", "<", "<gv")
