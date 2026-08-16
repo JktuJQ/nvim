@@ -1,12 +1,12 @@
 local opts = {
 	layouts = {
 		{
-			elements = { "scopes", "breakpoints", "stacks", "watches" },
-			position = "left",
-			size = 40,
+			elements = { "breakpoints", "watches" },
+			position = "right",
+			size = 30,
 		},
 		{
-			elements = { "repl", "console" },
+			elements = { "repl", "scopes" },
 			position = "bottom",
 			size = 10,
 		},
@@ -43,13 +43,12 @@ local keys = {
 return {
 	"rcarriga/nvim-dap-ui",
 	dependencies = {
-		"williamboman/mason.nvim",
 		"nvim-neotest/nvim-nio",
 
+		"williamboman/mason.nvim",
 		"mfussenegger/nvim-dap",
 	},
 
-	opts = opts,
 	config = config,
 	keys = keys,
 }

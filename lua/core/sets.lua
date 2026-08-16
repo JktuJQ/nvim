@@ -7,6 +7,7 @@ vim.g.localmapleader = "\\"
 -- appearance
 opt.termguicolors = true
 vim.g.have_nerd_fonts = true
+vim.o.winborder = "rounded"
 opt.conceallevel = 2
 opt.laststatus = 3
 opt.showmode = false

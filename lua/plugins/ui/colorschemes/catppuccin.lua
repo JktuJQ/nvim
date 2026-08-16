@@ -11,9 +11,9 @@ local opts = {
 	no_italic = false,
 	no_bold = false,
 	styles = {
-		comments = { italic = (vim.fn.has("gui_running") and true or false) },
+		comments = { "italic" },
+		keywords = { "italic" },
 		functions = {},
-		keywords = {},
 		strings = {},
 		variables = {},
 	},

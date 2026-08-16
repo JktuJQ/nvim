@@ -1,6 +1,5 @@
 local opts = {
 	options = {
-		theme = "catppuccin-nvim",
 		globalstatus = true,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
@@ -17,7 +16,7 @@ local opts = {
 
 					local clients = vim.lsp.get_clients({ bufnr = 0 })
 					if #clients > 0 then
-						table.insert(parts, "🛠" .. clients[1].name)
+						table.insert(parts, " " .. clients[1].name)
 					else
 						table.insert(parts, "No LSP")
 					end

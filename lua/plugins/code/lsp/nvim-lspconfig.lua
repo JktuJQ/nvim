@@ -77,6 +77,18 @@ local keys = {
 		desc = "Show line diagnostics",
 	},
 	{
+		"[d",
+		vim.lsp.diagnostic.goto_prev,
+		mode = "n",
+		desc = "Prev diagnostic",
+	},
+	{
+		"]d",
+		vim.lsp.diagnostic.goto_next,
+		mode = "n",
+		desc = "Next diagnostic",
+	},
+	{
 		"H",
 		vim.lsp.buf.hover,
 		mode = "n",
@@ -100,6 +112,14 @@ local keys = {
 			vim.lsp.buf.format({ async = true })
 		end,
 		mode = "n",
+		desc = "Format document",
+	},
+	{
+		"<leader>f",
+		function()
+			vim.lsp.buf.range_formatting({ async = true })
+		end,
+		mode = "v",
 		desc = "Format document",
 	},
 }

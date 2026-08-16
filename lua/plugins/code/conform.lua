@@ -6,6 +6,7 @@ local opts = {
 		javascript = { { "prettierd", "prettier" } },
 		go = { "goimports", "gofmt" },
 		rust = { "rustfmt", lsp_format = "fallback" },
+		haskell = { "ormolu" },
 		c = { "clang_format" },
 		cpp = { "clang_format" },
 		sh = { "shfmt" },
@@ -17,10 +18,10 @@ local opts = {
 	notify_on_error = true,
 	formatters = {
 		clang_format = {
-			prepend_args = { "--style=file", "--fallback-style=LLVM" },
+			append_args = { "--style=file", "--fallback-style=LLVM" },
 		},
 		shfmt = {
-			prepend_args = { "-i", "4" },
+			append_args = { "-i", "4" },
 		},
 	},
 }
@@ -31,7 +32,7 @@ local keys = {
 		function()
 			require("conform").format({ async = true, lsp_fallback = true })
 		end,
-		mode = "n",
+		mode = { "n", "v" },
 		desc = "Format buffer",
 	},
 }

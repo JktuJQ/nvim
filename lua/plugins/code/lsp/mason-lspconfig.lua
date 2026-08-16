@@ -30,9 +30,9 @@ local nil_ls = {
 		},
 	},
 }
-local pyright = {
+local basedpyright = {
 	settings = {
-		python = {
+		basedpyright = {
 			analysis = {
 				autoSearchPaths = true,
 				diagnosticMode = "openFilesOnly",
@@ -99,7 +99,7 @@ local texlab = {
 local servers = {
 	lua_ls = lua_ls,
 	nil_ls = nil_ls,
-	pyright = pyright,
+	basedpyright = basedpyright,
 	clangd = clangd,
 	rust_analyzer = rust_analyzer,
 	texlab = texlab,
@@ -109,7 +109,7 @@ local opts = {
 	ensure_installed = {
 		-- "lua_ls",
 		-- "nil_ls",
-		-- "pyright",
+		-- "basedpyright",
 		-- "clangd",
 		-- "rust_analyzer",
 		-- "hls",

@@ -1,9 +1,5 @@
 local opts = {
-	ft = "markdown",
-	cmd = "Scratch",
-	name = "Scratch",
-	autowrite = true,
-	persist = true,
+    enabled = true,
 }
 
 local keys = {
@@ -16,7 +12,7 @@ local keys = {
 		desc = "Toggle scratch buffer",
 	},
 	{
-		"<leader>ss",
+		"<leader>S",
 		function()
 			require("snacks").scratch.select()
 		end,

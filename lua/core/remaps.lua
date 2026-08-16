@@ -1,10 +1,10 @@
-local map = Snacks.keymap.set;
+local map = Snacks.keymap.set
 
 -- convenience remaps
 map("i", "kk", "<esc>", { desc = "Mode changer" })
 
-map("n", "<leader>yf", ":%y+<CR>")
-map("n", "<leader>pf", ":%d | put + | 1d_<CR>")
+map("n", "yf", ":%y+<CR>", { desc = "Yank whole file" })
+map("v", "p", "P", { desc = "Paste without register override", remap = true })
 
 -- typing
 map("i", ",", ",<c-g>u")
@@ -13,7 +13,7 @@ map("i", ";", ";<c-g>u")
 
 -- movement
 local better_jk = function(letter)
-    return ("v:count == 0 ? 'g%s' : '%s'"):format(letter, letter)
+	return ("v:count == 0 ? 'g%s' : '%s'"):format(letter, letter)
 end
 map({ "n", "x" }, "j", better_jk("j"), { desc = "Down", expr = true, silent = true, remap = true })
 map({ "n", "x" }, "k", better_jk("k"), { desc = "Up", expr = true, silent = true, remap = true })
@@ -42,10 +42,16 @@ map("n", "<C-q>", "<C-w>c", { desc = "Close split", remap = true })
 map("n", "<A-h>", "<cmd>bprevious<cr>", { desc = "Go to previous buffer" })
 map("n", "<A-l>", "<cmd>bnext<cr>", { desc = "Go to previous buffer" })
 
-map("n", "<A-b>", function() Snacks.bufdelete() end, { desc = "Delete buffer" })
-map("n", "<A-b>do", function() Snacks.bufdelete.other() end, { desc = "Delete other buffers" })
-map("n", "<A-b>di", function() Snacks.bufdelete.invisible() end, { desc = "Delete invisible buffers" })
-map("n", "<A-b>D", "<cmd>bd<cr>", { desc = "Delete buffer and window" })
+map("n", "<A-d>", function()
+	Snacks.bufdelete()
+end, { desc = "Delete buffer" })
+map("n", "<A-d>o", function()
+	Snacks.bufdelete.other()
+end, { desc = "Delete other buffers" })
+map("n", "<A-d>i", function()
+	Snacks.bufdelete.invisible()
+end, { desc = "Delete invisible buffers" })
+map("n", "<A-D>", "<cmd>bd<cr>", { desc = "Delete buffer and window" })
 
 -- tabs
 map("n", "<tab>f", "<cmd>tabfirst<cr>", { desc = "Go to first tab" })
@@ -68,8 +74,8 @@ map("v", "L", ">gv")
 
 -- search
 map({ "i", "n", "s" }, "<esc>", function()
-  vim.cmd("noh")
-  return "<esc>"
+	vim.cmd("noh")
+	return "<esc>"
 end, { expr = true, desc = "Escape and clear hlsearch" })
 
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })

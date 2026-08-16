@@ -1,15 +1,5 @@
 local opts = {
 	enabled = true,
-	position = "float",
-	win = {
-		style = "terminal",
-		position = "float",
-		border = "rounded",
-		title = "Terminal",
-		wo = {
-			winbar = "",
-		},
-	},
 }
 
 local keys = {

@@ -1,19 +1,16 @@
-local opts = {
-	signs = {
-		{ name = "DapBreakpoint", text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" },
-		{ name = "DapBreakpointCondition", text = "◉", texthl = "DapBreakpointCondition", linehl = "", numhl = "" },
-		{ name = "DapLogPoint", text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" },
-		{ name = "DapStopped", text = "→", texthl = "DapStopped", linehl = "", numhl = "" },
-	},
-}
-
 local config = function()
 	vim.api.nvim_set_hl(0, "DapBreakpoint", { fg = "#e53935" })
 	vim.api.nvim_set_hl(0, "DapBreakpointCondition", { fg = "#e53935" })
 	vim.api.nvim_set_hl(0, "DapLogPoint", { fg = "#81c784" })
 	vim.api.nvim_set_hl(0, "DapStopped", { fg = "#e53935" })
 
-	for _, sign in ipairs(opts.signs) do
+    local signs = {
+		{ name = "DapBreakpoint", text = "●", texthl = "DapBreakpoint", linehl = "", numhl = "" },
+		{ name = "DapBreakpointCondition", text = "◉", texthl = "DapBreakpointCondition", linehl = "", numhl = "" },
+		{ name = "DapLogPoint", text = "◆", texthl = "DapLogPoint", linehl = "", numhl = "" },
+		{ name = "DapStopped", text = "→", texthl = "DapStopped", linehl = "", numhl = "" },
+	}
+	for _, sign in ipairs(signs) do
 		vim.fn.sign_define(sign.name, {
 			text = sign.text,
 			texthl = sign.texthl,
@@ -30,7 +27,7 @@ local keys = {
 			require("dap").continue()
 		end,
 		mode = "n",
-		desc = "Start/continue",
+		desc = "Start/continue debugger",
 	},
 	{
 		"<leader>ds",
@@ -38,7 +35,7 @@ local keys = {
 			require("dap").step_over()
 		end,
 		mode = "n",
-		desc = "Step over",
+		desc = "Step over in debugger",
 	},
 	{
 		"<leader>di",
@@ -46,7 +43,7 @@ local keys = {
 			require("dap").step_into()
 		end,
 		mode = "n",
-		desc = "Step into",
+		desc = "Step into in debugger",
 	},
 	{
 		"<leader>db",
@@ -54,7 +51,7 @@ local keys = {
 			require("dap").toggle_breakpoint()
 		end,
 		mode = "n",
-		desc = "Toggle breakpoint",
+		desc = "Toggle breakpoint in debugger",
 	},
 	{
 		"<leader>dB",
@@ -62,7 +59,7 @@ local keys = {
 			require("dap").set_breakpoint(vim.fn.input("Condition: "))
 		end,
 		mode = "n",
-		desc = "Conditional breakpoint",
+		desc = "Conditional breakpoint in debugger",
 	},
 	{
 		"<leader>dr",
@@ -70,18 +67,18 @@ local keys = {
 			require("dap").repl.toggle()
 		end,
 		mode = "n",
-		desc = "Toggle REPL",
+		desc = "Toggle debugger REPL",
 	},
 }
 
 return {
     "mfussenegger/nvim-dap",
     dependencies = {
-        "williamboman/mason.nvim",
         "nvim-neotest/nvim-nio",
+
+        "williamboman/mason.nvim",
     },
 
-    opts = opts,
     config = config,
     keys = keys,
 }
