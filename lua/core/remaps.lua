@@ -1,4 +1,5 @@
 local map = Snacks.keymap.set
+local toggle = Snacks.toggle
 
 -- convenience remaps
 map("i", "kk", "<esc>", { desc = "Mode changer" })
@@ -82,3 +83,15 @@ map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search r
 map({ "x", "o" }, "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search result" })
 map({ "x", "o" }, "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+
+-- visuals
+toggle.line_number():map("<leader>ttn")
+toggle.option("relativenumber", { name = "Toggle relative number" }):map("<leader>ttnr")
+
+toggle.option("wrap", { name = "Toggle wrap" }):map("<leader>ttw")
+toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Toggle conceal level" }):map("<leader>ttc")
+toggle.option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Toggle tabline" }):map("<leader>ttt")
+
+-- diagnostics
+toggle.diagnostics():map("<leader>tte")
+toggle.option("spell", { name = "Toggle spelling check" }):map("<leader>tts")
