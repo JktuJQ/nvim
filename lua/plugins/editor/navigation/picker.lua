@@ -11,7 +11,7 @@ local keys = {
     {
         "<leader>ff",
         function()
-            Snacks.picker.smart()
+            Snacks.picker.files()
         end,
         mode = "n",
         desc = "Find files",
@@ -64,85 +64,6 @@ local keys = {
         end,
         mode = "n",
         desc = "Find lines",
-    },
-
-    -- git & github
-    {
-        "<leader>gb",
-        function()
-            Snacks.picker.git_branches()
-        end,
-        desc = "Git branches",
-    },
-    {
-        "<leader>gl",
-        function()
-            Snacks.picker.git_log_file()
-        end,
-        desc = "Git log of file",
-    },
-    {
-        "<leader>gll",
-        function()
-            Snacks.picker.git_log_line()
-        end,
-        desc = "Git log of file line",
-    },
-    {
-        "<leader>gL",
-        function()
-            Snacks.picker.git_log()
-        end,
-        desc = "Git log",
-    },
-    {
-        "<leader>gs",
-        function()
-            Snacks.picker.git_status()
-        end,
-        desc = "Git status",
-    },
-    {
-        "<leader>gS",
-        function()
-            Snacks.picker.git_stash()
-        end,
-        desc = "Git stash",
-    },
-    {
-        "<leader>gd",
-        function()
-            Snacks.picker.git_diff()
-        end,
-        desc = "Git diff (hunks)",
-    },
-    {
-        "<leader>gi",
-        function()
-            Snacks.picker.gh_issue()
-        end,
-        desc = "GitHub issues (open)",
-    },
-    {
-        "<leader>gI",
-        function()
-            Snacks.picker.gh_issue({ state = "all" })
-        end,
-        desc = "GitHub issues (all)",
-    },
-    {
-        "<leader>gp",
-        function()
-            Snacks.picker.gh_pr()
-        end,
-        desc = "GitHub pull requests (open)",
-    },
-    {
-        "<leader>gP",
-        function()
-            Snacks.picker.gh_pr({ state = "all" })
-        end,
-        desc = "GitHub pull requests (all)",
     },
 
     -- lsp
