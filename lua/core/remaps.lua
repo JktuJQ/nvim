@@ -2,9 +2,11 @@ local map = Snacks.keymap.set
 local toggle = Snacks.toggle
 
 -- convenience remaps
-map("i", "kk", "<esc>", { desc = "Mode changer" })
+map("i", "kk", "<esc>", { desc = "Go to normal mode" })
 
-map("n", "yf", ":%y+<CR>", { desc = "Yank whole file" })
+map("t", "<C-Space>", "<C-\\><C-n>", { desc = "Go no normal mode from terminal" })
+
+map("n", "yf", ":%y+<cr>", { desc = "Yank whole file" })
 map("v", "p", "P", { desc = "Paste without register override", remap = true })
 
 -- typing
