@@ -3,6 +3,7 @@ local opts = {
 		keys = {
 			{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 			{ icon = " ", key = "m", desc = "Filetree", action = ":lua Snacks.explorer()" },
+			{ icon = "󱞁 ", key = "s", desc = "Sessions", action = ":lua require('persistence').select()" },
 			{
 				icon = "󰒓 ",
 				key = "c",
