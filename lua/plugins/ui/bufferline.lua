@@ -74,18 +74,6 @@ local keys = {
 		desc = "Go to next buffer",
 	},
 	{
-		"[b",
-		"<cmd>BufferLineCyclePrev<cr>",
-		mode = "n",
-		desc = "Go to previous buffer",
-	},
-	{
-		"]b",
-		"<cmd>BufferLineCycleNext<cr>",
-		mode = "n",
-		desc = "Go to next buffer",
-	},
-	{
 		"<A-H>",
 		"<cmd>BufferLineMovePrev<cr>",
 		mode = "n",

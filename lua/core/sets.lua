@@ -41,7 +41,7 @@ opt.softtabstop = 4
 opt.shiftround = true
 
 -- searching
-opt.hlsearch = false
+opt.hlsearch = true
 opt.incsearch = true
 opt.ignorecase = true
 opt.smartcase = true
@@ -72,7 +72,7 @@ opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
 -- command line and completion
 opt.wildmode = "longest:full,full"
-opt.completeopt = "menu,menuone,noselect"
+opt.completeopt = "menu,menuone,noselect,noinsert"
 
 -- mouse and cursor
 opt.mouse = "a"

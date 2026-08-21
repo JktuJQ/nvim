@@ -3,6 +3,9 @@ local opts = {
 		backdrop = false,
 	},
 	modes = {
+		search = {
+			enabled = true,
+		},
 		char = {
 			enabled = true,
 			highlight = {
@@ -22,7 +25,7 @@ local keys = {
 		function()
 			require("flash").jump()
 		end,
-		desc = "Flash (jump to character)",
+		desc = "Search character",
 	},
 }
 

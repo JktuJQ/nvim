@@ -13,10 +13,15 @@ local opts = {
 			{
 				function()
 					local parts = {}
+					local ft = vim.bo.filetype
 
 					local clients = vim.lsp.get_clients({ bufnr = 0 })
 					if #clients > 0 then
-						table.insert(parts, " " .. clients[1].name)
+						local names = {}
+						for _, client in ipairs(clients) do
+							table.insert(names, client.name)
+						end
+						table.insert(parts, " " .. table.concat(names, ", "))
 					else
 						table.insert(parts, "No LSP")
 					end
@@ -67,6 +72,7 @@ local opts = {
 return {
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+
 	event = "VimEnter",
 
 	opts = opts,

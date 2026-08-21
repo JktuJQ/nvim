@@ -4,7 +4,7 @@ local opts = {
 
 local keys = {
 	{
-		"<leader>s",
+		"<leader>sb",
 		function()
 			require("snacks").scratch({ ft = vim.bo.filetype })
 		end,
@@ -12,7 +12,7 @@ local keys = {
 		desc = "Toggle scratch buffer",
 	},
 	{
-		"<leader>S",
+		"<leader>Sb",
 		function()
 			require("snacks").scratch.select()
 		end,

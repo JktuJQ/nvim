@@ -101,7 +101,7 @@ local keys = {
 		desc = "Rename symbol",
 	},
 	{
-		"<leader>ca",
+		"<leader>la",
 		vim.lsp.buf.code_action,
 		mode = "n",
 		desc = "Code action",

@@ -1,14 +1,32 @@
 local opts = {
 	keymap = {
-        preset = "default",
+		preset = "default",
 		["<C-j>"] = { "select_next", "fallback" },
 		["<C-k>"] = { "select_prev", "fallback" },
 		["<C-h>"] = { "show_documentation", "hide_documentation" },
-		["<cr>"] = { "accept", "fallback" },
+		["<Tab>"] = { "accept", "fallback" },
 	},
 	appearance = { nerd_font_variant = "mono" },
 	sources = {
 		default = { "lsp", "path", "snippets", "buffer" },
+		providers = {
+			lsp = { score_offset = 100 },
+			snippets = { score_offset = 0 },
+			path = { score_offset = 0 },
+			buffer = { score_offset = 0 },
+		},
+	},
+	completion = {
+		ghost_text = { enabled = true },
+		menu = {
+			direction_priority = { "n", "s" },
+		},
+		list = {
+			selection = {
+				preselect = true,
+				auto_insert = false,
+			},
+		},
 	},
 }
 
@@ -22,5 +40,6 @@ return {
 		version = "1.*",
 
 		opts = opts,
+		opts_extend = { "sources.default" },
 	},
 }

@@ -5,7 +5,6 @@ local opts = {
 	},
     diff_cur_node = {
         split_percent = 0.4,
-        width = 0.4
     }
 }
 
