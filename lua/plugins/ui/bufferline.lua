@@ -6,7 +6,7 @@ local opts = {
 		},
 		show_buffer_close_icons = false,
 		show_close_icon = false,
-        always_show_bufferline = false,
+		always_show_bufferline = true,
 
 		highlights = function()
 			require("catppuccin.special.bufferline").get_theme()
@@ -16,6 +16,20 @@ local opts = {
 			{
 				filetype = "snacks_layout_box",
 				text = "󰉓 ",
+				highlight = "Directory",
+				text_align = "center",
+				separator = false,
+			},
+			{
+				filetype = "sidekick_terminal",
+				text = "󰨊 ",
+				highlight = "Directory",
+				text_align = "center",
+				separator = false,
+			},
+			{
+				filetype = "atone",
+				text = " ",
 				highlight = "Directory",
 				text_align = "center",
 				separator = false,

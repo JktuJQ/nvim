@@ -1,5 +1,6 @@
 local opts = {
 	options = {
+		theme = "catppuccin-nvim",
 		globalstatus = true,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
@@ -8,7 +9,24 @@ local opts = {
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff", "diagnostics" },
-		lualine_c = {},
+		lualine_c = {
+			{
+				function()
+					local filename = vim.fn.expand("%:t")
+					local ft = vim.bo.filetype
+					if filename ~= "" and ft ~= "" then
+						return filename .. " (" .. ft .. ")"
+					elseif filename ~= "" then
+						return filename
+					elseif ft ~= "" then
+						return "(" .. ft .. ")"
+					else
+						return ""
+					end
+				end,
+				padding = { left = 1, right = 1 },
+			},
+		},
 		lualine_x = {
 			{
 				function()
@@ -57,14 +75,6 @@ local opts = {
 		},
 		lualine_y = { "progress" },
 		lualine_z = { "location" },
-	},
-	inactive_sections = {
-		lualine_a = {},
-		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = { "location" },
-		lualine_y = {},
-		lualine_z = {},
 	},
 	extensions = { "lazy", "mason", "nvim-tree", "trouble", "oil" },
 }

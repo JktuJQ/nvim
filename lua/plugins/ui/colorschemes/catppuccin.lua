@@ -1,24 +1,33 @@
 local opts = {
 	flavour = "mocha",
-	transparent_background = true,
 	show_end_of_buffer = false,
 	term_colors = true,
-	dim_inactive = {
-		enabled = true,
-		shade = "dark",
-		percentage = 0.15,
-	},
 	no_italic = false,
 	no_bold = false,
 	styles = {
 		comments = { "italic" },
+		conditionals = { "italic" },
+		loops = { "italic" },
 		keywords = { "italic" },
-		functions = {},
-		strings = {},
 		variables = {},
+		types = { "bold" },
+		functions = { "bold" },
+		properties = {},
+		numbers = { "bold" },
+		strings = { "bold" },
+		booleans = { "bold" },
+		operators = { "bold" },
 	},
+	custom_highlights = function(colors)
+		return {
+			["@keyword.function"] = { style = { "italic" } },
+			["@keyword.return"] = { style = { "italic" } },
+			["@keyword.import"] = { style = { "italic" } },
+			["@keyword.storage"] = { style = { "italic" } },
+		}
+	end,
 	integrations = {
-        bufferline = true,
+		bufferline = true,
 		blink_cmp = true,
 		lsp_trouble = true,
 		mason = true,
@@ -29,12 +38,12 @@ local opts = {
 }
 
 local config = function()
+	require("catppuccin").setup(opts)
 	vim.cmd("colorscheme catppuccin")
 end
 
 return {
 	"catppuccin/nvim",
-	priority = 1000,
 
 	opts = opts,
 	config = config,
