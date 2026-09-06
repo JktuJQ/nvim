@@ -26,6 +26,9 @@ map({ "n", "x" }, "<down>", "3j", { desc = "Down 3 lines", remap = true })
 map({ "n", "x" }, "<left>", "3h", { desc = "Left 3 symbols", remap = true })
 map({ "n", "x" }, "<right>", "3l", { desc = "Right 3 symbols", remap = true })
 
+map({ "n", "x" }, "<C-u>", "<C-u>zz", { desc = "Page up centered", remap = true })
+map({ "n", "x" }, "<C-d>", "<C-d>zz", { desc = "Page down centered", remap = true })
+
 -- splits
 map("n", "<C-h>", "<C-w>h", { desc = "Go to left split", remap = true })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower split", remap = true })
