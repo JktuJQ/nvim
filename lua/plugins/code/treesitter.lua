@@ -1,33 +1,3 @@
-local treesitter_opts = {
-	ensure_installed = {
-		"nix",
-		"lua",
-		"rust",
-		"haskell",
-		"bash",
-		"c",
-		"cpp",
-		"java",
-		"python",
-		"go",
-		"toml",
-		"json",
-		"yaml",
-		"markdown",
-		"latex",
-	},
-	auto_install = true,
-	highlight = {
-		enable = true,
-	},
-	indent = {
-		enable = true,
-	},
-	incremental_selection = {
-		enable = true,
-	},
-}
-
 local treesitter_textobjects_opts = {
 	select = {
 		enable = true,
@@ -50,22 +20,6 @@ local treesitter_textobjects_opts = {
 
 local treesitter_textobjects_keys = {
 	{
-		"if",
-		function()
-			require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
-		end,
-		mode = { "x", "o" },
-		desc = "Inner function",
-	},
-	{
-		"af",
-		function()
-			require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
-		end,
-		mode = { "x", "o" },
-		desc = "Around function",
-	},
-	{
 		"ic",
 		function()
 			require("nvim-treesitter-textobjects.select").select_textobject("@class.inner", "textobjects")
@@ -81,6 +35,24 @@ local treesitter_textobjects_keys = {
 		mode = { "x", "o" },
 		desc = "Around class",
 	},
+
+	{
+		"if",
+		function()
+			require("nvim-treesitter-textobjects.select").select_textobject("@function.inner", "textobjects")
+		end,
+		mode = { "x", "o" },
+		desc = "Inner function",
+	},
+	{
+		"af",
+		function()
+			require("nvim-treesitter-textobjects.select").select_textobject("@function.outer", "textobjects")
+		end,
+		mode = { "x", "o" },
+		desc = "Around function",
+	},
+
 	{
 		"ib",
 		function()
@@ -97,6 +69,7 @@ local treesitter_textobjects_keys = {
 		mode = { "x", "o" },
 		desc = "Around block",
 	},
+
 	{
 		"il",
 		function()
@@ -113,6 +86,7 @@ local treesitter_textobjects_keys = {
 		mode = { "x", "o" },
 		desc = "Around loop",
 	},
+
 	{
 		"ii",
 		function()
@@ -129,8 +103,9 @@ local treesitter_textobjects_keys = {
 		mode = { "x", "o" },
 		desc = "Around conditional",
 	},
+
 	{
-		"ip",
+		"i,",
 		function()
 			require("nvim-treesitter-textobjects.select").select_textobject("@parameter.inner", "textobjects")
 		end,
@@ -138,7 +113,7 @@ local treesitter_textobjects_keys = {
 		desc = "Inner parameter",
 	},
 	{
-		"ap",
+		"a,",
 		function()
 			require("nvim-treesitter-textobjects.select").select_textobject("@parameter.outer", "textobjects")
 		end,
@@ -147,39 +122,6 @@ local treesitter_textobjects_keys = {
 	},
 
 	-- move
-	{
-		"]f",
-		function()
-			require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
-		end,
-		mode = { "n", "x", "o" },
-		desc = "Next function start",
-	},
-	{
-		"]F",
-		function()
-			require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
-		end,
-		mode = { "n", "x", "o" },
-		desc = "Next function end",
-	},
-	{
-		"[f",
-		function()
-			require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
-		end,
-		mode = { "n", "x", "o" },
-		desc = "Previous function start",
-	},
-	{
-		"[F",
-		function()
-			require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
-		end,
-		mode = { "n", "x", "o" },
-		desc = "Previous function end",
-	},
-
 	{
 		"]c",
 		function()
@@ -211,6 +153,39 @@ local treesitter_textobjects_keys = {
 		end,
 		mode = { "n", "x", "o" },
 		desc = "Previous class end",
+	},
+
+	{
+		"]f",
+		function()
+			require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+		end,
+		mode = { "n", "x", "o" },
+		desc = "Next function start",
+	},
+	{
+		"]F",
+		function()
+			require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+		end,
+		mode = { "n", "x", "o" },
+		desc = "Next function end",
+	},
+	{
+		"[f",
+		function()
+			require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+		end,
+		mode = { "n", "x", "o" },
+		desc = "Previous function start",
+	},
+	{
+		"[F",
+		function()
+			require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
+		end,
+		mode = { "n", "x", "o" },
+		desc = "Previous function end",
 	},
 
 	{
@@ -313,7 +288,7 @@ local treesitter_textobjects_keys = {
 	},
 
 	{
-		"]p",
+		"],",
 		function()
 			require("nvim-treesitter-textobjects.move").goto_next_start("@parameter.outer", "textobjects")
 		end,
@@ -321,7 +296,7 @@ local treesitter_textobjects_keys = {
 		desc = "Next parameter start",
 	},
 	{
-		"]P",
+		"]<",
 		function()
 			require("nvim-treesitter-textobjects.move").goto_next_end("@parameter.outer", "textobjects")
 		end,
@@ -329,7 +304,7 @@ local treesitter_textobjects_keys = {
 		desc = "Next parameter end",
 	},
 	{
-		"[p",
+		"[,",
 		function()
 			require("nvim-treesitter-textobjects.move").goto_previous_start("@parameter.outer", "textobjects")
 		end,
@@ -337,7 +312,7 @@ local treesitter_textobjects_keys = {
 		desc = "Previous parameter start",
 	},
 	{
-		"[P",
+		"[<",
 		function()
 			require("nvim-treesitter-textobjects.move").goto_previous_end("@parameter.outer", "textobjects")
 		end,
@@ -346,23 +321,6 @@ local treesitter_textobjects_keys = {
 	},
 
 	-- swap
-	{
-		"<leader>sf",
-		function()
-			require("nvim-treesitter-textobjects.swap").swap_next("@function.outer")
-		end,
-		mode = "n",
-		desc = "Swap function next",
-	},
-	{
-		"<leader>Sf",
-		function()
-			require("nvim-treesitter-textobjects.swap").swap_previous("@function.outer")
-		end,
-		mode = "n",
-		desc = "Swap function previous",
-	},
-
 	{
 		"<leader>sc",
 		function()
@@ -378,6 +336,23 @@ local treesitter_textobjects_keys = {
 		end,
 		mode = "n",
 		desc = "Swap class previous",
+	},
+
+	{
+		"<leader>sf",
+		function()
+			require("nvim-treesitter-textobjects.swap").swap_next("@function.outer")
+		end,
+		mode = "n",
+		desc = "Swap function next",
+	},
+	{
+		"<leader>Sf",
+		function()
+			require("nvim-treesitter-textobjects.swap").swap_previous("@function.outer")
+		end,
+		mode = "n",
+		desc = "Swap function previous",
 	},
 
 	{
@@ -432,7 +407,7 @@ local treesitter_textobjects_keys = {
 	},
 
 	{
-		"<leader>sp",
+		"<leader>s,",
 		function()
 			require("nvim-treesitter-textobjects.swap").swap_next("@parameter.inner")
 		end,
@@ -440,7 +415,7 @@ local treesitter_textobjects_keys = {
 		desc = "Swap parameter next",
 	},
 	{
-		"<leader>Sp",
+		"<leader>S,",
 		function()
 			require("nvim-treesitter-textobjects.swap").swap_previous("@parameter.inner")
 		end,
@@ -452,12 +427,24 @@ local treesitter_textobjects_keys = {
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
+		branch = "main",
 		lazy = false,
 
 		build = ":TSUpdate",
 		cmd = { "TSInstall", "TSUpdate" },
 
 		opts = treesitter_opts,
+		config = function()
+			vim.api.nvim_create_autocmd("FileType", {
+				group = vim.api.nvim_create_augroup("TreesitterStart", {}),
+				callback = function()
+					pcall(vim.treesitter.start)
+					pcall(function()
+						vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+					end)
+				end,
+			})
+		end,
 	},
 	{
 		"nvim-treesitter/nvim-treesitter-textobjects",

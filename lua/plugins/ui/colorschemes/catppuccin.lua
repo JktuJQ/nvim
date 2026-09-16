@@ -18,11 +18,11 @@ local opts = {
 		booleans = { "bold" },
 		operators = { "bold" },
 	},
-	custom_highlights = function(colors)
+	custom_highlights = function(_)
 		return {
 			["@keyword.function"] = { style = { "italic" } },
 			["@keyword.return"] = { style = { "italic" } },
-			["@keyword.import"] = { style = { "italic" } },
+            ["@keyword.import"] = { link = "@keyword" },
 			["@keyword.storage"] = { style = { "italic" } },
 		}
 	end,

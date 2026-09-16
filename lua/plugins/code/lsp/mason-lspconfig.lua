@@ -78,6 +78,16 @@ local rust_analyzer = {
 		},
 	},
 }
+local hls = {
+	settings = {
+		haskell = {
+			formattingProvider = "ormolu",
+			plugin = {
+				hlint = { enable = true },
+			},
+		},
+	},
+}
 local texlab = {
 	settings = {
 		texlab = {
@@ -102,6 +112,7 @@ local servers = {
 	basedpyright = basedpyright,
 	clangd = clangd,
 	rust_analyzer = rust_analyzer,
+    hls = hls,
 	texlab = texlab,
 }
 
