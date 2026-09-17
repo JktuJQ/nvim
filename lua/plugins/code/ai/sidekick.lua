@@ -8,6 +8,11 @@ local opts = {
 			enabled = false,
 			backend = "tmux",
 		},
+        win = {
+            split = {
+                width = 0.3,
+            }
+        }
 	},
 
 	prompts = {
@@ -21,7 +26,9 @@ local keys = {
 	{
 		"<leader>an",
 		function()
-			require("sidekick.nes").toggle()
+			local nes = require("sidekick.nes")
+			nes.toggle()
+			vim.notify("NES: " .. (nes.enabled and "enabled" or "disabled"), vim.log.levels.INFO)
 		end,
 		mode = "n",
 		desc = "Toggle NES",

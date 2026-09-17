@@ -3,10 +3,14 @@ local opts = {
 		direction = "right",
 		width = 0.25,
 	},
-    diff_cur_node = {
-        split_percent = 0.4,
-    }
+	diff_cur_node = {
+		split_percent = 0.4,
+	},
 }
+
+local config = function()
+	require("atone").setup(opts)
+end
 
 local keys = {
 	{
@@ -19,9 +23,9 @@ local keys = {
 
 return {
 	"XXiaoA/atone.nvim",
-
 	cmd = "Atone",
 
 	opts = opts,
+	config = config,
 	keys = keys,
 }

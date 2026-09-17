@@ -1,41 +1,64 @@
-local opts = {}
+local opts = {
+	open_no_results = true,
+	auto_preview = false,
+	win = {
+		type = "split",
+		relative = "win",
+		position = "bottom",
+		size = { height = 0.25 },
+		wo = {
+			winhighlight = "Normal:SnacksNormalNC,NormalNC:SnacksNormalNC",
+		},
+	},
+	preview = {
+		type = "main",
+		size = { width = 0.5 },
+		wo = {
+			winhighlight = "Normal:SnacksNormalNC,NormalNC:SnacksNormalNC",
+		},
+	},
+	modes = {
+		symbols = { win = { position = "bottom" } },
+		lsp = { win = { position = "bottom" } },
+	},
+}
 
 local keys = {
 	{
 		"<leader>td",
-		"<cmd>Trouble diagnostics toggle<cr>",
+		"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
 		mode = "n",
-		desc = "Diagnostics (Trouble)",
+		desc = "Buffer diagnostics",
 	},
 	{
 		"<leader>tD",
-		"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+		"<cmd>Trouble diagnostics toggle<cr>",
 		mode = "n",
-		desc = "Buffer Diagnostics (Trouble)",
+		desc = "Diagnostics",
 	},
 	{
 		"<leader>ts",
-		"<cmd>Trouble symbols toggle focus=false win.position=right win.size=40<cr>",
+		"<cmd>Trouble symbols toggle<cr>",
 		mode = "n",
-		desc = "Symbols (Trouble)",
+		desc = "Symbols",
 	},
 	{
 		"<leader>tl",
-		"<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+		"<cmd>Trouble lsp toggle<cr>",
 		mode = "n",
-		desc = "LSP Definitions / references (Trouble)",
+		desc = "LSP definitions / references",
 	},
 	{
 		"<leader>tL",
 		"<cmd>Trouble loclist toggle<cr>",
 		mode = "n",
-		desc = "Location List (Trouble)",
+		desc = "Location list",
 	},
 	{
 		"<leader>tQ",
 		"<cmd>Trouble qflist toggle<cr>",
 		mode = "n",
-		desc = "Quickfix List (Trouble)",
+		desc = "Quickfix list",
 	},
 }
 

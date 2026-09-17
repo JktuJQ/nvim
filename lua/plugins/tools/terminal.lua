@@ -1,5 +1,14 @@
 local opts = {
 	enabled = true,
+	win = {
+        enter = false,
+		height = 0.25,
+		relative = "win",
+		wo = {
+			winbar = "",
+            winhighlight = "Normal:SnacksNormalNC,NormalNC:SnacksNormalNC",
+		},
+	},
 }
 
 local keys = {
