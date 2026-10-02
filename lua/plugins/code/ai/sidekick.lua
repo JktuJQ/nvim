@@ -5,14 +5,14 @@ local opts = {
 
 	cli = {
 		mux = {
-			enabled = false,
-			backend = "tmux",
+			enabled = true,
+			backend = "zellij",
 		},
-        win = {
-            split = {
-                width = 0.3,
-            }
-        }
+		win = {
+			split = {
+				width = 0.3,
+			},
+		},
 	},
 
 	prompts = {
@@ -29,6 +29,14 @@ local keys = {
 			local nes = require("sidekick.nes")
 			nes.toggle()
 			vim.notify("NES: " .. (nes.enabled and "enabled" or "disabled"), vim.log.levels.INFO)
+		end,
+		mode = "n",
+		desc = "Toggle NES",
+	},
+	{
+		"<leader>ann",
+		function()
+			require("sidekick.nes").update()
 		end,
 		mode = "n",
 		desc = "Toggle NES",
@@ -68,6 +76,13 @@ local keys = {
 		desc = "Toggle AI CLI",
 	},
 	{
+		"<leader>ais",
+		function()
+			require("sidekick.cli").select()
+		end,
+		desc = "Select CLI",
+	},
+	{
 		"<leader>ad",
 		function()
 			require("sidekick.cli").close()
@@ -80,7 +95,7 @@ local keys = {
 	{
 		"<leader>ast",
 		function()
-			require("sidekick.cli").send({ msg = "{this}" })
+			require("sidekick.cli").send({ msg = "{this}", focus = false })
 		end,
 		mode = { "n", "v" },
 		desc = "Send 'this'",
@@ -88,7 +103,7 @@ local keys = {
 	{
 		"<leader>asv",
 		function()
-			require("sidekick.cli").send({ msg = "{selection}" })
+			require("sidekick.cli").send({ msg = "{selection}", focus = false })
 		end,
 		mode = "v",
 		desc = "Send selection",
@@ -96,7 +111,7 @@ local keys = {
 	{
 		"<leader>asl",
 		function()
-			require("sidekick.cli").send({ msg = "{line}" })
+			require("sidekick.cli").send({ msg = "{line}", focus = false })
 		end,
 		mode = "n",
 		desc = "Send current line",
@@ -104,7 +119,7 @@ local keys = {
 	{
 		"<leader>asF",
 		function()
-			require("sidekick.cli").send({ msg = "{file}" })
+			require("sidekick.cli").send({ msg = "{file}", focus = false })
 		end,
 		mode = "n",
 		desc = "Send current file",
@@ -112,7 +127,7 @@ local keys = {
 	{
 		"<leader>asf",
 		function()
-			require("sidekick.cli").send({ msg = "{function}" })
+			require("sidekick.cli").send({ msg = "{function}", focus = false })
 		end,
 		mode = "n",
 		desc = "Send function under cursor",
@@ -120,7 +135,7 @@ local keys = {
 	{
 		"<leader>asc",
 		function()
-			require("sidekick.cli").send({ msg = "{class}" })
+			require("sidekick.cli").send({ msg = "{class}", focus = false })
 		end,
 		mode = "n",
 		desc = "Send class under cursor",
@@ -128,7 +143,7 @@ local keys = {
 	{
 		"<leader>asd",
 		function()
-			require("sidekick.cli").send({ msg = "{diagnostics}" })
+			require("sidekick.cli").send({ msg = "{diagnostics}", focus = false })
 		end,
 		mode = "n",
 		desc = "Send diagnostics for current file",
@@ -136,7 +151,7 @@ local keys = {
 	{
 		"<leader>asD",
 		function()
-			require("sidekick.cli").send({ msg = "{diagnostics_all}" })
+			require("sidekick.cli").send({ msg = "{diagnostics_all}", focus = false })
 		end,
 		mode = "n",
 		desc = "Send all diagnostics",
@@ -144,9 +159,9 @@ local keys = {
 
 	-- prompts
 	{
-		"<leader>ap",
+		"<leader>asp",
 		function()
-			require("sidekick.cli").prompt()
+			require("sidekick.cli").prompt({ focus = false })
 		end,
 		mode = "n",
 		desc = "Select and send prompt",

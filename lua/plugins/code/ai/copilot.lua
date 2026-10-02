@@ -1,4 +1,5 @@
 local opts = {
+    enabled = false,
 	suggestion = { enabled = false },
 	panel = { enabled = false },
 	server = {
@@ -24,14 +25,35 @@ local keys = {
 		mode = "n",
 		desc = "Copilot status",
 	},
+	{
+		"<leader>ct",
+		function()
+			local ok, Snacks = pcall(require, "snacks")
+			if ok and Snacks.toggle then
+				Snacks.toggle({
+					name = "Copilot Completion",
+					get = function()
+						return not require("copilot.client").is_disabled()
+					end,
+					set = function(state)
+						if state then
+							vim.cmd("Copilot enable")
+						else
+							vim.cmd("Copilot disable")
+						end
+					end,
+				}):toggle()
+            end
+		end,
+		mode = "n",
+		desc = "Toggle Copilot lsp",
+	},
 }
 
 return {
 	{
 		"zbirenbaum/copilot.lua",
-
 		cmd = "Copilot",
-		event = "InsertEnter",
 
 		opts = opts,
 		keys = keys,
