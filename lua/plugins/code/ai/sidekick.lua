@@ -21,6 +21,13 @@ local opts = {
 	},
 }
 
+local config = function()
+	local zellij = require("sidekick.cli.session.zellij")
+	zellij.tpl = zellij.tpl:gsub("session_serialization false", "session_serialization true\nserialization_interval 5")
+
+	require("sidekick").setup(opts)
+end
+
 local keys = {
 	-- NES
 	{
@@ -177,6 +184,7 @@ return {
 		},
 
 		opts = opts,
+		config = config,
 		keys = keys,
 	},
 	{
