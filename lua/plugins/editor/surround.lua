@@ -5,10 +5,10 @@ end
 
 local keys = {
 	{
-		"as",
+		"gs",
 		"<Plug>(nvim-surround-normal)",
 		mode = "n",
-		desc = "Add surround ({motion}{char})",
+		desc = "Go surround ({motion}{char})",
 	},
 	{
 		"ds",
