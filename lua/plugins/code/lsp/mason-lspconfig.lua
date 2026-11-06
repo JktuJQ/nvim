@@ -114,6 +114,7 @@ local servers = {
 	rust_analyzer = rust_analyzer,
     hls = hls,
 	texlab = texlab,
+	jdtls = {},
 }
 
 local opts = {

@@ -6,7 +6,7 @@ local opts = {
 		javascript = { { "prettierd", "prettier" } },
 		go = { "goimports", "gofmt" },
 		rust = { "rustfmt", lsp_format = "fallback" },
-		haskell = { "ormolu" },
+		haskell = { "fourmolu" },
 		c = { "clang_format" },
 		cpp = { "clang_format" },
 		sh = { "shfmt" },

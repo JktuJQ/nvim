@@ -1,6 +1,9 @@
 local opts = {
 	highlight = {
 		backdrop = false,
+		groups = {
+			label = "Visual",
+		},
 	},
 	modes = {
 		search = {
@@ -9,7 +12,7 @@ local opts = {
 		char = {
 			enabled = true,
 			highlight = {
-				backdrop = false,
+				backdrop = true,
 			},
 			jump_labels = true,
 			multi_line = true,
@@ -31,7 +34,6 @@ local keys = {
 
 return {
 	"folke/flash.nvim",
-
 	opts = opts,
 	keys = keys,
 }

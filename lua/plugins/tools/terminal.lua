@@ -1,7 +1,7 @@
 local opts = {
 	enabled = true,
 	win = {
-        enter = false,
+        enter = true,
 		height = 0.25,
 		relative = "win",
 		wo = {

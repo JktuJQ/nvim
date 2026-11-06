@@ -10,6 +10,9 @@ local opts = {
 	},
 	win = {
 		style = "lazygit",
+		relative = "editor",
+		width = 0.9,
+		height = 0.9,
 	},
 }
 
