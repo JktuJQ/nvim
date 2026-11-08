@@ -145,6 +145,10 @@ everyday mappings; `<leader>fk` opens the searchable keymap picker.
 | `<leader>cf` | Format the buffer or selection with Conform |
 | `<leader>gg` | Open Lazygit |
 | `<leader>gs` / `<leader>gd` | Git status / diff picker |
+| `<leader>gD` | Review changes against HEAD with Diffview |
+| `<leader>gr` | Pick a branch to review; `Ctrl-b` selects a different base |
+| `<leader>gq` | Close Diffview |
+| `<leader>gh` / `<leader>gH` | File / repository history with Diffview |
 | `<leader>gi` / `<leader>gp` | GitHub issues / pull requests |
 | `<leader>db` / `<leader>dc` | Toggle breakpoint / start or continue debugging |
 | `<leader>ds` / `<leader>di` | Step over / into |
