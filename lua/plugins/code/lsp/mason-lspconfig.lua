@@ -57,6 +57,60 @@ local clangd = {
 		},
 	},
 }
+local jdtls = {
+	-- Isolate each project by its full path, including checkouts with the same name.
+	cmd = function(dispatchers, config)
+		local root = vim.fs.normalize(config.root_dir or vim.fn.getcwd())
+		local project = vim.fn.fnamemodify(root, ":t") .. "-" .. vim.fn.sha256(root):sub(1, 12)
+		local data_dir = vim.fs.joinpath(vim.fn.stdpath("cache"), "jdtls", "projects", project)
+		local cmd = { "jdtls", "-data", data_dir }
+		-- Keep the actual command available to nvim-jdtls maintenance commands.
+		config.cmd = cmd
+		return vim.lsp.rpc.start(cmd, dispatchers, {
+			cwd = root,
+			env = config.cmd_env,
+			detached = config.detached,
+		})
+	end,
+	init_options = {
+		extendedClientCapabilities = { classFileContentsSupport = true },
+	},
+	-- JDT LS starts importing during initialize; send settings before that import.
+	before_init = function(params, config)
+		params.initializationOptions = vim.tbl_deep_extend("force", params.initializationOptions or {}, {
+			settings = config.settings,
+		})
+	end,
+	settings = {
+		java = {
+			jdt = { ls = { androidSupport = { enabled = true } } },
+			configuration = { updateBuildConfiguration = "automatic" },
+			import = {
+				gradle = { enabled = true, wrapper = { enabled = true } },
+				maven = { enabled = true },
+			},
+			eclipse = { downloadSources = true },
+			maven = { downloadSources = true },
+			signatureHelp = { enabled = true },
+			inlayHints = { parameterNames = { enabled = "literals" } },
+			format = { enabled = true },
+			completion = {
+				importOrder = { "java", "javax", "org", "com" },
+			},
+		},
+	},
+}
+local kotlin_lsp = {
+	workspace_required = true,
+	root_markers = {
+		"settings.gradle",
+		"settings.gradle.kts",
+		"pom.xml",
+		"build.gradle",
+		"build.gradle.kts",
+		"workspace.json",
+	},
+}
 local rust_analyzer = {
 	settings = {
 		["rust-analyzer"] = {
@@ -111,10 +165,11 @@ local servers = {
 	nil_ls = nil_ls,
 	basedpyright = basedpyright,
 	clangd = clangd,
+	jdtls = jdtls,
+	kotlin_lsp = kotlin_lsp,
 	rust_analyzer = rust_analyzer,
-    hls = hls,
+	hls = hls,
 	texlab = texlab,
-	jdtls = {},
 }
 
 local opts = {
@@ -139,15 +194,15 @@ local config = function()
 	end
 
 	for server_name, server_config in pairs(servers) do
-		vim.lsp.config(server_name, {
+		local merged_config = vim.tbl_deep_extend("force", {
 			capabilities = capabilities,
 			on_attach = function(client, bufnr)
 				if client.server_capabilities.inlayHintProvider then
 					vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 				end
 			end,
-			settings = server_config.settings or {},
-		})
+		}, server_config)
+		vim.lsp.config(server_name, merged_config)
 	end
 
 	vim.lsp.enable(vim.tbl_keys(servers))
@@ -155,7 +210,9 @@ end
 
 return {
 	"williamboman/mason-lspconfig.nvim",
-	dependencies = { "williamboman/mason.nvim" },
+	dependencies = {
+		"williamboman/mason.nvim",
+	},
 
 	opts = opts,
 	config = config,

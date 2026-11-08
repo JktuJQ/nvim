@@ -1,10 +1,12 @@
 local opts = {
 	formatters_by_ft = {
 		lua = { "stylua" },
+		java = { "google-java-format" },
 		nix = { "nixfmt" },
 		python = { "black", "isort" },
 		javascript = { { "prettierd", "prettier" } },
 		go = { "goimports", "gofmt" },
+		kotlin = { "ktfmt" },
 		rust = { "rustfmt", lsp_format = "fallback" },
 		haskell = { "fourmolu" },
 		c = { "clang_format" },
